@@ -1,0 +1,92 @@
+{% load static wagtailuserbar wagtailcore_tags %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>
+      {% if page.title %}
+        {{ page.title }}
+      {% else %}
+        {{ site.title }}
+      {% endif %}
+    </title>
+
+    <meta name="author" content="{{ site.author }}" />
+
+    <!-- Description -->
+    {% if page.description %}
+      <meta name="description" content="{{ page.description }}" />
+    {% else %}
+      <meta name="description" content="{{ site.description }}">
+    {% endif %}
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+    <link rel="stylesheet" href="{% static 'vendor/reveal.js/css/reveal.css' %}"/>
+    <link rel="stylesheet" href="{% static 'vendor/reveal.js/css/theme/night.css' %}" id="theme"/>
+
+    <!-- Code syntax highlighting -->
+    <link rel="stylesheet" href="{% static 'vendor/reveal.js/lib/css/zenburn.css' %}"/>
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? "{% static 'vendor/reveal.js/css/print/pdf.css' %}" : "{% static 'vendor/reveal.js/css/print/paper.css' %}";
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+  
+    <div class="reveal">
+      <div class="slides">
+        {% block content %}
+          {% for slide in page.body %}
+            {% include_block slide %}
+          {% endfor %}
+        {% endblock %}
+      </div>
+    </div>
+
+    <script src="{% static 'vendor/reveal.js/lib/js/head.min.js' %}"></script>
+    <script src="{% static 'vendor/reveal.js/js/reveal.js' %}"></script>
+    <script>
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: false,
+        {%if page.transition %}
+          transition: '{{page.transition}}',
+        {% else %}
+          transition: 'slide', // none/fade/slide/convex/concave/zoom
+        {% endif %}
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: '{% static "vendor/reveal.js/lib/js/classList.js" %}', condition: function() { return !document.body.classList; } },
+          { src: '{% static "vendor/reveal.js/plugin/markdown/marked.js" %}', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '{% static "vendor/reveal.js/plugin/markdown/markdown.js" %}', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '{% static "vendor/reveal.js/plugin/highlight/highlight.js" %}', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '{% static "vendor/reveal.js/plugin/zoom-js/zoom.js" %}', async: true },
+          { src: '{% static "vendor/reveal.js/plugin/notes/notes.js" %}', async: true }
+        ]
+      });
+
+    </script>
+    
+  </body>
+</html>

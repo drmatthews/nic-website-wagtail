@@ -1,0 +1,93 @@
+{% load wiki_tags static wagtailuserbar %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        {% get_site_root as site_root %}
+        <title>{% block title %}{% if self.seo_title %}{{ site_root.title }} | {{ self.seo_title }}{% else %}{{ site_root.title }} | {{ page.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">        
+        <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:200,300,400,500,700">                
+        <link rel="stylesheet" type="text/css" href="{% static 'wiki/css/wiki.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'wiki/css/syntax.css' %}">
+
+        {% block extra_css %}
+            {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+    </head>
+
+    <body class="{% block body_class %}{% endblock %}">
+        {% wagtailuserbar %}
+        {% include "wiki/includes/header.html" %}
+        <div class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8 content">
+                        {% block content %}{% endblock %}
+                    </div>
+                    <div class="col-md-4">
+                        {% include "wiki/includes/sidebar.html" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% include "wiki/includes/footer.html" %}
+        
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>        
+        <script type="text/javascript">
+            $(function () {
+              $('[data-toggle="tooltip"]').tooltip()
+            })
+            var headerHeight = 120;
+
+            $(window).bind('scroll', function () {
+            if ($(window).scrollTop() > headerHeight) {
+                $('#main-nav').addClass('navbar-fixed-top');
+            } else {
+                $('#main-nav').removeClass('navbar-fixed-top');
+            }
+            });
+        </script>
+
+        <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyByuWPxnQGzi6XhOTmBHbwU-qM3zXBGIxE'></script>
+
+        <script type='text/javascript'>
+            function init_map(){
+                var lat = 51.50274899999999,
+                    lon = -0.09010880000005272,
+                    zoom_level = 14;
+                var myOptions = {
+                    zoom:zoom_level,
+                    center:new google.maps.LatLng(lat,lon),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                };
+                    
+                map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+                marker = new google.maps.Marker({
+                    map: map,
+                    position: new google.maps.LatLng(lat,lon)
+                });
+                infowindow = new google.maps.InfoWindow({
+                    content:'<strong>NIC@KCL</strong><br>Newcomen St<br>SE1 1UL London<br>'
+                });
+                google.maps.event.addListener(marker, 'click', function(){
+                    infowindow.open(map,marker);
+                });
+            }
+            google.maps.event.addDomListener(window, 'load', init_map);
+        </script>        
+
+        {% block extra_js %}
+            {# Override this in templates to add extra javascript #}
+        {% endblock %}
+    </body>
+</html>

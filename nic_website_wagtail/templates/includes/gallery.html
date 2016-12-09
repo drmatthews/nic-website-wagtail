@@ -1,0 +1,9 @@
+{% load wagtailimages_tags %}
+<div id="image-gallery">
+    <div class="fotorama" data-nav="thumbs" data-arrows="true"
+     data-click="true" data-ratio="800/600" data-loop="true" data-autoplay="3000">
+    {% for item in image_gallery %}
+        {{ item }}
+    {% endfor %}
+    </div>
+</div>

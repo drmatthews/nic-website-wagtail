@@ -1,0 +1,117 @@
+@charset "utf-8";
+/* CSS Document */
+html {
+    height: 100%;
+}
+body {
+    position: relative;
+    margin: 0;
+    min-height: 100%;    
+    font-family: "Roboto", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+}
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6{
+  font-family: "Roboto", sans-serif;
+  font-weight: 200;
+}
+.main {
+    width: 100%;
+    padding-bottom: 50px;
+}
+.container-fluid {
+    max-width: 900px;
+}
+.hgroup-wrap {
+    padding: 20px 0 15px;
+    background-color: #CF0000;
+    border-style: solid none solid none;
+    border-color: #FFCC00;
+    border-width: 3px 0px 1px 0px;
+}
+/* Logo, Title and Description */
+#site-logo {
+    float: left;
+    margin-top: 20px;
+}
+#site-title {
+    font-size: 28px;
+    text-transform: uppercase;
+    line-height: 35px;
+}
+#site-title a {
+    color: #fff;
+    display: block;
+}
+#site-title a img {
+    vertical-align: inherit;
+    max-width: 978px;
+    display: block;
+}
+#site-title a span,
+#site-title a:hover,
+#site-title a:focus,
+#site-title a:active {
+    color: #3ab0db;
+}
+#site-search {
+    display: none;
+}
+#page-content {
+    float: left;
+    margin-top: 2rem;
+    text-align: left;
+}
+#sidebar {
+    margin-top: 2rem;
+    display: none;
+}
+#footer {
+    display: none;
+}
+
+@media (min-width: 750px) {
+    #footer {
+        display: block;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 1rem;
+        background-color: #efefef;
+        text-align: left;
+        text-align: center;
+    }
+    .sidebar-title {
+        font-size: 18px;
+        font-weight: normal;
+        line-height: 23px;
+        text-transform: uppercase;
+        color: #333;
+    }
+    #contact-info {
+        margin-bottom: 40px;    
+    }
+    #contact-info p {
+        margin-bottom: 1rem;
+    }
+    #contact-info a {
+        text-decoration: none;
+    }
+    #site-search {
+        display: block;
+        float: right;
+        margin-top: 40px;
+    }
+}
+
+@media (min-width: 990px) {
+    .navbar > .container-fluid {
+        width: 100%;
+    }
+    #sidebar {
+        height: 100%;
+        display: block;
+        float: right;
+    }
+}

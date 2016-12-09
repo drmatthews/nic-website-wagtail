@@ -1,0 +1,7 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<section>
+	{% for block in sub_slide %}
+		{% include_block block.value %}
+	{% endfor %}
+</section>

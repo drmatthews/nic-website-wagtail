@@ -1,0 +1,16 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+  <div class="row">
+    <div class="one-half column">
+      <figure class="u-max-full-width scope">
+        {% include_block value.first_image %}
+        <figcaption>{{ value.first_image.title }}</figcaption>        
+        </figure>
+    </div>
+    <div class="one-half column">
+      <figure class="u-max-full-width scope">
+        {% include_block value.second_image %}
+        <figcaption>{{ value.second_image.title }}</figcaption>        
+        </figure>
+    </div>      
+  </div>

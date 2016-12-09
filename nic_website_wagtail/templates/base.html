@@ -1,0 +1,66 @@
+{% load static wagtailuserbar %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {# Global stylesheets #}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/vendor/fotorama.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/vendor/normalize.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/vendor/skeleton.css' %}">                
+        <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
+
+        <style type="text/css">
+            body {
+              background: url("{% static 'img/bg_gradient.png' %}") repeat-x top center;
+            }
+            @media all and ( min-width: 750px ) {
+              .wrapper {
+                    background: url("{% static 'img/bg_gradient.png' %}") repeat-x top center;
+                }
+            }
+            @media all and ( min-width: 960px ) {
+                .sidebar {
+                    background: url("{% static 'img/sidebar.png' %}") no-repeat;
+                }
+            }
+        </style>
+        {% block extra_css %}
+            {# Override this in templates to add extra stylesheets #}
+        {% endblock %}
+    </head>
+
+    <body class="{% block body_class %}{% endblock %}">
+        {% wagtailuserbar %}
+        {% include "includes/mob_nav.html" %}  
+        <div class="wrapper"> <!-- this is here purely to enable mobile nav -->
+          <div class="container"> <!-- this the skeleton.css container class -->
+            {% include "includes/header.html" %}
+            {% include "includes/sidebar.html" %}
+            <div class="page">
+              <div class="page-content">
+                {% block content %}{% endblock %}
+              </div>
+            </div>
+            {% include "includes/footer.html" %}
+          </div>
+        </div>
+
+        {# Global javascript #}
+        <script type="text/javascript" src="{% static 'js/vendor/jquery-1.12.0.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/vendor/fotorama.js' %}"></script>                 
+        <script type="text/javascript" src="{% static 'js/nicpages.js' %}"></script>
+
+        {% block extra_js %}
+            {# Override this in templates to add extra javascript #}
+        {% endblock %}
+    </body>
+</html>

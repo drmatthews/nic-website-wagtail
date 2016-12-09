@@ -1,0 +1,6 @@
+Django>=1.10,<1.11
+wagtail>=1.7,<1.8
+django-environ>=0.4.1
+psycopg2>=2.6.2
+wagtailmedia>=0.1.2
+pygmets>=2.1.3

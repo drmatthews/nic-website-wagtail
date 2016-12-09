@@ -1,0 +1,11 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<section data-transition="{{ value.transition }}">
+	<section>
+		{% include_block value.image %}
+		{% include_block value.slide_content %}
+	</section>
+	{% if value.sub_slide %}
+		{% include_block value.sub_slide with sub_slide=value.sub_slide %}
+	{% endif %}
+</section>
