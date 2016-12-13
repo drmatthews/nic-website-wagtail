@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.conf import settings
 from django.db import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
@@ -30,6 +31,8 @@ from modelcluster.tags import ClusterTaggableManager
 from pygments import highlight
 from pygments.formatters import get_formatter_by_name
 from pygments.lexers import get_lexer_by_name
+
+GOOGLE_MAPS_KEY = settings.GOOGLE_MAPS_KEY
 
 class CodeBlock(blocks.StructBlock):
     """
@@ -104,4 +107,11 @@ class WikiPage(Page):
     content_panels = Page.content_panels + [
     	ImageChooserPanel('main_image'),
         StreamFieldPanel('body'),
-    ]	
+    ]
+
+    def get_context(self, request):
+        context = super(WikiPage, self).get_context(request)
+
+        # Add extra variables and return the updated context
+        context['google_maps_key'] = GOOGLE_MAPS_KEY
+        return context    	

@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.conf import settings
 from django.db import models
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
@@ -26,6 +27,9 @@ from taggit.models import TaggedItemBase
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 
+GOOGLE_MAPS_KEY = settings.GOOGLE_MAPS_KEY
+print GOOGLE_MAPS_KEY
+
 class HeadlineBlock(blocks.CharBlock):
     class Meta:
         template = 'nicpages/blocks/headline.html'
@@ -36,23 +40,28 @@ class CentreAlignHeadingBlock(blocks.CharBlock):
 
 
 class GoogleMapBlock(blocks.StructBlock):
-	title = blocks.CharBlock(required=True,max_length=255)
-	street = blocks.CharBlock(required=True,max_length=255)
-	postcode = blocks.CharBlock(required=True,max_length=255)
-	city = blocks.CharBlock(required=True,max_length=255)
-	map_long = blocks.CharBlock(required=True,max_length=255)
-	map_lat = blocks.CharBlock(required=True,max_length=255)
-	map_zoom_level = blocks.CharBlock(default=14,required=True,max_length=3)
-	width = blocks.IntegerBlock(required=True)
-	height = blocks.IntegerBlock(required=True)
+    title = blocks.CharBlock(required=True,max_length=255)
+    street = blocks.CharBlock(required=True,max_length=255)
+    postcode = blocks.CharBlock(required=True,max_length=255)
+    city = blocks.CharBlock(required=True,max_length=255)
+    map_long = blocks.CharBlock(required=True,max_length=255)
+    map_lat = blocks.CharBlock(required=True,max_length=255)
+    map_zoom_level = blocks.CharBlock(default=14,required=True,max_length=3)
+    width = blocks.IntegerBlock(required=True)
+    height = blocks.IntegerBlock(required=True)
 
-	class Meta:
-		template = 'blocks/google_map.html'
-		icon = 'cogs'
-		label = 'Google Map'
+    def get_context(self, value):
+        context = super(GoogleMapBlock, self).get_context(value)
+        context['google_maps_key'] = GOOGLE_MAPS_KEY        
+        return context
+
+    class Meta:
+        template = 'blocks/google_map.html'
+        icon = 'cogs'
+        label = 'Google Map'
 
 class VideoBlock(AbstractMediaChooserBlock):
-    def render_basic(self, value):
+    def render_basic(self, value, context=None):
         if not value:
             return ''
 
@@ -70,7 +79,7 @@ class VideoBlock(AbstractMediaChooserBlock):
         return format_html(player_code, value.file.url)
 
 class HomePageVideoBlock(AbstractMediaChooserBlock):
-    def render_basic(self, value):
+    def render_basic(self, value, context=None):
         if not value:
             return ''
 
