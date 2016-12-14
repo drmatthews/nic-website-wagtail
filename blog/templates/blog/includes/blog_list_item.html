@@ -11,7 +11,7 @@
     {% endif %}
     <div class="media-body">
       <h4 class="media-heading">{{ blog.title }}</h4>
-      <p><strong>{{ blog.date }}</strong></p>
+      <p><span class="glyphicon glyphicon-calendar"></span><strong> {{ blog.date }} {{ blog.time }}</strong></p>
       {% if blog.search_description %}
         <p>{{ blog.search_description }}</p>
       {% endif %}
