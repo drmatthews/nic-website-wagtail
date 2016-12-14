@@ -313,6 +313,45 @@ label[for="nav-trigger"] {
   font-size: 16px;
 }
 
+/* Lists
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+ul {
+  list-style: circle inside; }
+ol {
+  list-style: decimal inside; }
+ol, ul {
+  padding-left: 0;
+  margin-top: 0; }
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin: 1.5rem 0 1.5rem 3rem;
+  font-size: 90%; }
+li {
+  margin-bottom: 1rem; }
+
+/* Spacing
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+button,
+.button {
+  margin-bottom: 1rem; }
+input,
+textarea,
+select,
+fieldset {
+  margin-bottom: 1.5rem; }
+pre,
+blockquote,
+dl,
+figure,
+table,
+p,
+ul,
+ol,
+form {
+  margin-bottom: 2.5rem; }  
+
 /* Utilities
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .u-full-width {
@@ -481,37 +520,37 @@ label[for="nav-trigger"] {
   }  
 
   #mission{
-    padding-top: 5px;
+    padding-top: 0px;
     padding-left: 60px;
   }
 
   #access{
-    padding-top: 42px;
+    padding-top: 37px;
     padding-left: 50px;
   }
 
   #gallery{
-    padding-top: 30px;
+    padding-top: 23px;
     padding-left: 5px;
   }
 
   #equipment{
-    padding-top: 35px;
+    padding-top: 25px;
     padding-left: 10px; 
   }
 
   #contact{
-    padding-top: 43px;
+    padding-top: 33px;
     padding-left: 35px; 
   }
 
   #blog{
-    padding-top: 50px;
+    padding-top: 35px;
     padding-left: 65px; 
   }
 
   #wiki{
-    padding-top: 42px;
+    padding-top: 32px;
     padding-left: 85px; 
   }
 
