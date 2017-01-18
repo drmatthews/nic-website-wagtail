@@ -106,7 +106,7 @@ WSGI_APPLICATION = 'nic_website_wagtail.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {'default' : env.db("DATABASE_URL")}
+DATABASES = {'default' : env.db("NIC_DATABASE_URL")}
 
 
 # Internationalization
