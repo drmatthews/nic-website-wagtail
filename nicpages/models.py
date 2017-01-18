@@ -134,8 +134,8 @@ class ColOffsetChoiceBlock(blocks.FieldBlock):
 
 class TwoColumnBlock(blocks.StructBlock):
 
-    col_one_offset = ColOffsetChoiceBlock()
-    col_two_offset = ColOffsetChoiceBlock()
+    #col_one_offset = ColOffsetChoiceBlock()
+    #col_two_offset = ColOffsetChoiceBlock()
 
     left_column = blocks.StreamBlock([
             ('heading', blocks.CharBlock(classname="full title")),
