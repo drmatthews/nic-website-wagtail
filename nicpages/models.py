@@ -318,43 +318,8 @@ class NicPage(Page):
         StreamFieldPanel('body'),
     ]
 
-class SlideImageChooserBlock(blocks.StructBlock):
-    image = ImageChooserBlock(required=False)
-
-    class Meta:
-        template = 'nicpages/blocks/slide_image.html'
-        icon = 'doc-full'
-
 class SlideTransitionChoiceBlock(blocks.FieldBlock):
     field = forms.ChoiceField(choices=(
         ('none', 'none'), ('fade', 'fade'), ('slide', 'slide'), ('convex', 'convex'),\
         ('concave','concave'),('zoom','zoom')
     ))        
-
-class RevealjsSubSlideBlock(blocks.StreamBlock):
-    subslide_image = SlideImageChooserBlock()
-    subslide_content = blocks.RichTextBlock()
-
-    class Meta:
-        template = 'nicpages/blocks/sub_slide.html'    	
-        icon='image'
-
-class RevealjsSlideBlock(blocks.StructBlock):
-    image = SlideImageChooserBlock()
-    transition = SlideTransitionChoiceBlock()
-    slide_content = blocks.RichTextBlock()
-    sub_slide = RevealjsSubSlideBlock()
-
-    class Meta:
-        icon='image'
-        template = 'nicpages/blocks/slide.html'        
-
-class RevealJSPage(Page):
-
-    body = StreamField([
-        ('slide', RevealjsSlideBlock())
-    ],null=True,blank=True)
-
-    content_panels = Page.content_panels + [
-        StreamFieldPanel('body'),
-    ]
