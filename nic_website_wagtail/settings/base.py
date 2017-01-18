@@ -27,6 +27,7 @@ GOOGLE_MAPS_KEY = env("GOOGLE_MAP_API_KEY")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
+ALLOWED_HOSTS = ['localhost','127.0.0.1','159.92.63.125',]
 
 # Application definition
 
@@ -62,6 +63,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'mod_wsgi.server',
 ]
 
 MIDDLEWARE = [
@@ -105,7 +107,7 @@ WSGI_APPLICATION = 'nic_website_wagtail.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {'default' : env.db("DATABASE_URL")}
+DATABASES = {'default' : env.db("NIC_DATABASE_URL")}
 
 
 # Internationalization
