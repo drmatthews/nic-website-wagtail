@@ -28,7 +28,13 @@ from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 
 GOOGLE_MAPS_KEY = settings.GOOGLE_MAPS_KEY
-print GOOGLE_MAPS_KEY
+
+new_table_options = {
+    'colHeaders': True,
+    'rowHeaders': False,
+    'editor': 'text',
+    'stretchH': 'all',
+}
 
 class HeadlineBlock(blocks.CharBlock):
     class Meta:
@@ -310,7 +316,7 @@ class NicPage(Page):
         ('google_map', GoogleMapBlock()),
         ('two_columns', TwoColumnBlock()),
         ('image_gallery', NicGalleryBlock()),
-        ('table', TableBlock())
+        ('table', TableBlock(table_options=new_table_options))
     ],null=True,blank=True)
 
     content_panels = Page.content_panels + [
