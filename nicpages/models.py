@@ -110,8 +110,9 @@ class ImageResponsiveBlock(blocks.StructBlock):
         icon = 'image'
 
 class EquipmentBannerBlock(blocks.StructBlock):
-    title = blocks.CharBlock(required=False)
-    image = ImageChooserBlock(required=False)
+    title = blocks.CharBlock(required=True)
+    image = ImageChooserBlock(required=True)
+    page = blocks.PageChooserBlock(required=True)
 
     class Meta:
         template = 'nicpages/blocks/equip_banner.html'
