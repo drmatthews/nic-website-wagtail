@@ -204,6 +204,8 @@ label[for="nav-trigger"] {
 .scope {
   float: left;
   margin-left: 0;
+  padding-top: 10px;
+  padding-left: 50px;
 }
 
 .content {
