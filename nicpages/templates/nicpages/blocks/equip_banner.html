@@ -1,3 +1,7 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
-<a href="{% include_block value.page.url %}">{% image value.image width-275 %}</a>
+{% if value.page.url %}
+	<a href="{% include_block value.page.url %}">{% image value.image width-275 %}</a>
+{% else %}
+    <a href="{% include_block value.external_link %}">{% image value.image width-275 %}</a>
+{% endif %}
