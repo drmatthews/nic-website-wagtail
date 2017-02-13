@@ -39,6 +39,8 @@
                     </div>
                 {% endif %}
             </div>
+        {% elif child.block_type == 'doc_with_preview' %}
+            <a href="{{ child.value.doc.url }}">{% image child.value.preview width-300 class="poster" %}</a>
         {% else %}
             {{ child }}
         {% endif %}
