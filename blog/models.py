@@ -43,6 +43,14 @@ class GoogleMapBlock(blocks.StructBlock):
 		icon = 'cogs'
 		label = 'Google Map'
 
+class DocWithPreviewBlock(blocks.StructBlock):
+    preview = ImageChooserBlock()
+    doc = DocumentChooserBlock()        
+
+    class Meta:
+        template = 'blocks/doc_with_preview.html'
+        icon = 'doc-full'        
+
 class VideoBlock(AbstractMediaChooserBlock):
     def render_basic(self, value):
         if not value:
@@ -106,7 +114,7 @@ class DemoStreamBlock(blocks.StreamBlock):
     pullquote = PullQuoteBlock()
     aligned_html = AlignedHTMLBlock(icon="code", label='Raw HTML')
     document = DocumentChooserBlock(icon="doc-full-inverse")        
-
+    doc_with_preview = DocWithPreviewBlock(icon="doc-full-inverse")
 
 # A couple of abstract classes that contain commonly used fields
 
