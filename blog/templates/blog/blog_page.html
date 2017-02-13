@@ -2,8 +2,8 @@
 
 {% load wagtailcore_tags %}
 
+{% block content %}
 
-{% block heading %}
   <div class="page-header">
 
     <div class="pull-right">
@@ -21,9 +21,6 @@
     </h2>
 
   </div>
-{% endblock %}
-
-{% block content %}
     {% include "includes/carousel.html" with carousel_items=self.carousel_items.all only %}
 
     {% if self.body %}
