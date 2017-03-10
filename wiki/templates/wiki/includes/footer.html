@@ -1,1 +1,35 @@
-<footer id="footer">The footer should be on the bottom of the page</footer>
+{% load static menu_tags %}
+
+
+<footer class="footer-bs">
+    <div class="row">
+    	<div class="col-md-3 footer-brand">
+        	<img src="/static/img/nic-banner-wiki-logo.png">
+            <p>The Nikon Imaging Centre at King’s College London (NIC@King's) is a core facility for light microscopy developed in partnership between King’s College London and Nikon Instruments UK.</p>
+            <p>© 2017 Nikon Imaging Centre, King's College London, All rights reserved</p>
+        </div>
+    	<div class="col-md-4 footer-nav">
+        	<h4>Menu —</h4>
+            {% flat_menu 'wiki_footer_menu' template='wiki/tags/footer_menu.html' %}
+        	<div class="col-md-6">
+                <ul class="list">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contacts</a></li>
+                </ul>
+            </div>
+        </div>
+    	<div class="col-md-2 footer-social">
+        	<h4>Follow Us</h4>
+        	<ul>
+            	<li><a href="#">Twitter</a></li>
+            	<li><a href="#">Instagram</a></li>
+            	<li><a href="#">RSS</a></li>
+            </ul>
+        </div>
+    	<div class="col-md-3 footer-ns">
+        	<h4>Newsletter</h4>
+        	<p>To keep up to date, subscribe to our newsletter</p>
+        	{% include 'wiki/includes/newsletter.html' %}
+        </div>
+    </div>
+</footer>

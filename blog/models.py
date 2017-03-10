@@ -24,7 +24,15 @@ from wagtail.wagtailsearch import index
 from taggit.models import TaggedItemBase
 
 from modelcluster.fields import ParentalKey
-from modelcluster.tags import ClusterTaggableManager	
+from modelcluster.tags import ClusterTaggableManager
+
+class CentreAlignHeadingBlock(blocks.CharBlock):
+    class Meta:
+        template = 'shared_blocks/centre_heading.html'
+
+class HeadlineBlock(blocks.CharBlock):
+    class Meta:
+        template = 'shared_blocks/headline.html'        	
 
 
 class GoogleMapBlock(blocks.StructBlock):
@@ -39,7 +47,7 @@ class GoogleMapBlock(blocks.StructBlock):
 	height = blocks.IntegerBlock(required=True)
 
 	class Meta:
-		template = 'blocks/google_map.html'
+		template = 'shared_blocks/google_map.html'
 		icon = 'cogs'
 		label = 'Google Map'
 
@@ -48,17 +56,17 @@ class DocWithPreviewBlock(blocks.StructBlock):
     doc = DocumentChooserBlock()        
 
     class Meta:
-        template = 'blocks/doc_with_preview.html'
+        template = 'shared_blocks/doc_with_preview.html'
         icon = 'doc-full'        
 
 class VideoBlock(AbstractMediaChooserBlock):
-    def render_basic(self, value):
+    def render_basic(self, value, context=None):
         if not value:
             return ''
 
         player_code = '''
         <div>
-            <video width="320" height="240" controls>
+            <video id="video" autoplay loop width="320" height="240" width="320" height="240" controls>
                 <source src="{0}" type="video/mp4">
                 <source src="{0}" type="video/webm">
                 <source src="{0}" type="video/ogg">
@@ -67,7 +75,7 @@ class VideoBlock(AbstractMediaChooserBlock):
         </div>
         '''
 
-        return format_html(player_code, value.file.url)    
+        return format_html(player_code, value.file.url)            
 
 # Global Streamfield definition
 
@@ -202,6 +210,19 @@ class BlogIndexPage(Page):
         index.SearchField('intro'),
     ]
 
+    body = StreamField([
+        ('h1', blocks.CharBlock(icon="title")),
+        ('h2', blocks.CharBlock(icon="title")),
+        ('h3', blocks.CharBlock(icon="title")),
+        ('h4', blocks.CharBlock(icon="title")),
+        ('h5', blocks.CharBlock(icon="title")),
+        ('centre_heading', CentreAlignHeadingBlock()),
+        ('headline', HeadlineBlock()),
+        ('paragraph', blocks.RichTextBlock()),
+        ('video', VideoBlock(icon='media')),
+        ('home_video', VideoBlock(icon='media'))
+    ],null=True,blank=True)
+
     @property
     def blogs(self):
         # Get list of live blog pages that are descendants of this page
@@ -240,6 +261,7 @@ BlogIndexPage.content_panels = [
     FieldPanel('title', classname="full title"),
     FieldPanel('intro', classname="full"),
     InlinePanel('related_links', label="Related links"),
+    StreamFieldPanel('body'),
 ]
 
 BlogIndexPage.promote_panels = Page.promote_panels

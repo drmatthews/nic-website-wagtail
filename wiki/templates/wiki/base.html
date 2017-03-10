@@ -47,7 +47,7 @@
             $(function () {
               $('[data-toggle="tooltip"]').tooltip()
             })
-            var headerHeight = 120;
+            var headerHeight = 130;
 
             $(window).bind('scroll', function () {
             if ($(window).scrollTop() > headerHeight) {
@@ -56,6 +56,8 @@
                 $('#main-nav').removeClass('navbar-fixed-top');
             }
             });
+
+
         </script>        
 
         {% block extra_js %}

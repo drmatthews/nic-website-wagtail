@@ -22,6 +22,7 @@ from wagtail.contrib.table_block.blocks import TableBlock
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtaildocs.edit_handlers import DocumentChooserPanel
 from wagtail.wagtailsearch import index
+from wagtailmenus.models import MenuPage
 
 from taggit.models import TaggedItemBase
 
@@ -54,7 +55,7 @@ class CodeBlock(blocks.StructBlock):
     class Meta:
         icon = 'code'
 
-    def render(self, value):
+    def render(self, value, context=None):
         src = value['code'].strip('\n')
         lang = value['language']
         if 'imagej' in lang:
@@ -77,7 +78,7 @@ class DocWithPreviewBlock(blocks.StructBlock):
     doc = DocumentChooserBlock()        
 
     class Meta:
-        template = 'blocks/doc_with_preview.html'
+        template = 'shared_blocks/doc_with_preview.html'
         icon = 'doc-full'
 
 class DocWithPreviewRowBlock(blocks.StructBlock):
@@ -85,10 +86,10 @@ class DocWithPreviewRowBlock(blocks.StructBlock):
     second_doc = DocWithPreviewBlock()
 
     class Meta:
-        template = 'blocks/doc_with_preview_row.html'
+        template = 'shared_blocks/doc_with_preview_row.html'
         icon = 'doc-full'        
 
-class WikiPage(Page):
+class WikiPage(MenuPage):
     main_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,

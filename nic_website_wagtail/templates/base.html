@@ -41,17 +41,17 @@
 
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
-        {% include "includes/mob_nav.html" %}  
+        {% include "shared_includes/mob_nav.html" %}  
         <div class="wrapper"> <!-- this is here purely to enable mobile nav -->
           <div class="container"> <!-- this the skeleton.css container class -->
-            {% include "includes/header.html" %}
-            {% include "includes/sidebar.html" %}
+            {% include "shared_includes/header.html" %}
+            {% include "shared_includes/sidebar.html" %}
             <div class="page">
               <div class="content">
                 {% block content %}{% endblock %}
               </div>
             </div>
-            {% include "includes/footer.html" %}
+            {% include "shared_includes/footer.html" %}
           </div>
         </div>
 

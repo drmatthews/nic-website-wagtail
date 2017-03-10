@@ -27,6 +27,8 @@ from taggit.models import TaggedItemBase
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 
+from blog.models import BlogPage
+
 GOOGLE_MAPS_KEY = settings.GOOGLE_MAPS_KEY
 
 new_table_options = {
@@ -38,11 +40,11 @@ new_table_options = {
 
 class HeadlineBlock(blocks.CharBlock):
     class Meta:
-        template = 'nicpages/blocks/headline.html'
+        template = 'shared_blocks/headline.html'
 
 class CentreAlignHeadingBlock(blocks.CharBlock):
     class Meta:
-        template = 'nicpages/blocks/centre_heading.html'	
+        template = 'shared_blocks/centre_heading.html'	
 
 
 class GoogleMapBlock(blocks.StructBlock):
@@ -62,7 +64,7 @@ class GoogleMapBlock(blocks.StructBlock):
         return context
 
     class Meta:
-        template = 'blocks/google_map.html'
+        template = 'shared_blocks/google_map.html'
         icon = 'cogs'
         label = 'Google Map'
 
@@ -131,7 +133,7 @@ class DocWithPreviewBlock(blocks.StructBlock):
     doc = DocumentChooserBlock()        
 
     class Meta:
-        template = 'blocks/doc_with_preview.html'
+        template = 'shared_blocks/doc_with_preview.html'
         icon = 'doc-full'
 
 class ColOffsetChoiceBlock(blocks.FieldBlock):
@@ -325,6 +327,17 @@ class NicPage(Page):
     	ImageChooserPanel('main_image'),
         StreamFieldPanel('body'),
     ]
+
+    def blogs(self):
+        # Get list of live blog pages that are descendants of the ResourceIndexPage page
+        blogs = BlogPage.objects.all().order_by('date')
+
+        return blogs[0:1]
+
+    def get_context(self, request):
+        context = super(NicPage, self).get_context(request)
+        context['blogs'] = self.blogs()
+        return context
 
 class SlideTransitionChoiceBlock(blocks.FieldBlock):
     field = forms.ChoiceField(choices=(
