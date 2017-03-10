@@ -1,0 +1,7 @@
+<div class="col-md-6">
+    <ul class="pages">
+        {% for menu_item in menu_items %}
+            <li><a href="{{ menu_item.href }}">{{ menu_item.text }}</a></li>      
+        {% endfor %}
+    </ul>
+</div>

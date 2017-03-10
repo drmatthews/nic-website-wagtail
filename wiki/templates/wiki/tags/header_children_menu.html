@@ -1,0 +1,5 @@
+<ul class="dropdown-menu">
+{% for child in menu_items %}
+	<li><a href="{{ child.href }}">{{ child.text }}</a></li>
+{% endfor %}
+</ul>

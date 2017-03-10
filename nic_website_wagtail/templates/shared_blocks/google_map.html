@@ -1,0 +1,33 @@
+<script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key={{ google_maps_key }}'></script>
+
+<div style='overflow:hidden;height:{{ self.height }}px;width:{{ self.width }}px;padding-bottom:20px'>
+	<div id='gmap_canvas' style='height:{{ self.height }}px;width:{{ self.width }}px;'></div>
+	<style>
+		#gmap_canvas img{max-width:none!important;background:none!important}
+	</style>
+</div>
+
+<script type='text/javascript'>
+	function init_map(){
+		var myOptions = {
+			zoom:{{ self.map_zoom_level }},
+			center:new google.maps.LatLng({{ self.map_lat }},{{ self.map_long }}),
+			//center:new google.maps.LatLng(51.50274899999999,-0.09010880000005272),
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+			
+		map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+		marker = new google.maps.Marker({
+			map: map,
+			position: new google.maps.LatLng({{ self.map_lat }},{{ self.map_long }})
+		});
+		infowindow = new google.maps.InfoWindow({
+			content:'<strong>{{ self.title }}</strong><br>{{ self.street }}<br>{{ self.postcode }} {{ self.city }}<br>'
+		});
+		google.maps.event.addListener(marker, 'click', function(){
+			infowindow.open(map,marker);
+		});
+		infowindow.open(map,marker);
+	}
+	google.maps.event.addDomListener(window, 'load', init_map);
+</script>
