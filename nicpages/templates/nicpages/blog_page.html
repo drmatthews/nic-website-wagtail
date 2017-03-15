@@ -21,13 +21,13 @@
     </h2>
 
   </div>
-    {% include "shared_includes/carousel.html" with carousel_items=self.carousel_items.all only %}
+    {% include "includes/carousel.html" with carousel_items=self.carousel_items.all only %}
 
     {% if self.body %}
         <div class="body-content">
-            {% include "blog/includes/streamfield.html" with content=self.body %}
+            {% include "includes/streamfield.html" with content=self.body %}
         </div>
     {% endif %}
 
-    {% include "blog/includes/related_links.html" with related_links=self.related_links.all only %}
+    {% include "includes/related_links.html" with related_links=self.related_links.all only %}
 {% endblock %}

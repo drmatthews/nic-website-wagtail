@@ -68,24 +68,29 @@ class SlideImageChooserBlock(blocks.StructBlock):
         icon = 'doc-full'
 
 class SlideTransitionChoiceBlock(blocks.FieldBlock):
-    field = forms.ChoiceField(choices=(
-        ('none', 'none'), ('fade', 'fade'), ('slide', 'slide'), ('convex', 'convex'),\
-        ('concave','concave'),('zoom','zoom')
+    field = forms.ChoiceField(
+        choices=(
+        ('none', 'none'),
+        ('fade', 'fade'),
+        ('slide', 'slide'),
+        ('convex', 'convex'),
+        ('concave','concave'),
+        ('zoom','zoom')
     ))        
 
-class RevealjsSubSlideBlock(blocks.StreamBlock):
-    subslide_image = SlideImageChooserBlock()
+class SubSlideBlock(blocks.StreamBlock):
+    subslide_image = ImageChooserBlock()
     subslide_content = blocks.RichTextBlock()
 
     class Meta:
         template = 'slide_deck/blocks/sub_slide.html'    	
         icon='image'
 
-class RevealjsSlideBlock(blocks.StructBlock):
-    image = SlideImageChooserBlock()
+class SlideBlock(blocks.StructBlock):
+    image = ImageChooserBlock(required=False)
     transition = SlideTransitionChoiceBlock()
     slide_content = blocks.RichTextBlock()
-    sub_slide = RevealjsSubSlideBlock()
+    sub_slide = SubSlideBlock()
 
     class Meta:
         icon='image'
@@ -93,10 +98,10 @@ class RevealjsSlideBlock(blocks.StructBlock):
 
 class SlideDeckPage(Page):
 
-    body = StreamField([
-        ('slide', RevealjsSlideBlock())
+    deck = StreamField([
+        ('slide', SlideBlock())
     ],null=True,blank=True)
 
     content_panels = Page.content_panels + [
-        StreamFieldPanel('body'),
+        StreamFieldPanel('deck'),
     ]

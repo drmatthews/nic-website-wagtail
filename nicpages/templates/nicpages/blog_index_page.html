@@ -3,7 +3,7 @@
 {% load wagtailcore_tags %}
 
 {% block content %}
-    {% include "blog/includes/intro.html" with intro=self.intro only %}
+    {% include "includes/intro.html" with intro=self.intro only %}
 
     <section>
         {% for block in page.body %}
@@ -33,7 +33,7 @@
         {# Uses serve method defined in models.py - allows for paging if required #}
         {# See also standard index for creating a listing with a tag #}
         {% for blog in blogs %}
-            {% include "blog/includes/blog_list_item.html" %}
+            {% include "includes/blog_list_item.html" %}
         {% empty %}
             No blogs found
         {% endfor %}
@@ -57,5 +57,5 @@
         </div>
     </div>
 
-    {% include "blog/includes/related_links.html" with related_links=self.related_links.all only %}
+    {% include "includes/related_links.html" with related_links=self.related_links.all only %}
 {% endblock %}

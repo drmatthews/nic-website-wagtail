@@ -2,6 +2,10 @@
 
 <section>
 	{% for block in sub_slide %}
-		{% include_block block.value %}
+		{% if block.block_type == 'subslide_image' %}
+			{% image block.value original %}
+		{% else %}
+			{% include_block block.value %}
+		{% endif %}
 	{% endfor %}
 </section>

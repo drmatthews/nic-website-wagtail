@@ -38,11 +38,11 @@ new_table_options = {
 
 class HeadlineBlock(blocks.CharBlock):
     class Meta:
-        template = 'shared_blocks/headline.html'
+        template = 'nicpages/blocks/headline.html'
 
 class CentreAlignHeadingBlock(blocks.CharBlock):
     class Meta:
-        template = 'shared_blocks/centre_heading.html'	
+        template = 'nicpages/blocks/centre_heading.html'	
 
 
 class GoogleMapBlock(blocks.StructBlock):
@@ -62,7 +62,7 @@ class GoogleMapBlock(blocks.StructBlock):
         return context
 
     class Meta:
-        template = 'shared_blocks/google_map.html'
+        template = 'nicpages/blocks/google_map.html'
         icon = 'cogs'
         label = 'Google Map'
 
@@ -131,7 +131,7 @@ class DocWithPreviewBlock(blocks.StructBlock):
     doc = DocumentChooserBlock()        
 
     class Meta:
-        template = 'shared_blocks/doc_with_preview.html'
+        template = 'nicpages/blocks/doc_with_preview.html'
         icon = 'doc-full'
 
 class ColOffsetChoiceBlock(blocks.FieldBlock):
@@ -201,7 +201,7 @@ class AlignedHTMLBlock(blocks.StructBlock):
     class Meta:
         icon = "code"        
 
-class DemoStreamBlock(blocks.StreamBlock):
+class BlogStreamBlock(blocks.StreamBlock):
     h2 = blocks.CharBlock(icon="title", classname="title")
     h3 = blocks.CharBlock(icon="title", classname="title")
     h4 = blocks.CharBlock(icon="title", classname="title")
@@ -335,13 +335,7 @@ class NicPage(Page):
     def get_context(self, request):
         context = super(NicPage, self).get_context(request)
         context['blogs'] = self.blogs()
-        return context
-
-class SlideTransitionChoiceBlock(blocks.FieldBlock):
-    field = forms.ChoiceField(choices=(
-        ('none', 'none'), ('fade', 'fade'), ('slide', 'slide'), ('convex', 'convex'),\
-        ('concave','concave'),('zoom','zoom')
-    ))        
+        return context      
 
 # Blog index page
 
@@ -403,12 +397,12 @@ class BlogIndexPage(Page):
         context['blogs'] = blogs
         return context
 
-BlogIndexPage.content_panels = [
-    FieldPanel('title', classname="full title"),
-    FieldPanel('intro', classname="full"),
-    InlinePanel('related_links', label="Related links"),
-    StreamFieldPanel('body'),
-]
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('intro', classname="full"),
+        InlinePanel('related_links', label="Related links"),
+        StreamFieldPanel('body'),
+    ]
 
 BlogIndexPage.promote_panels = Page.promote_panels
 
@@ -428,7 +422,7 @@ class BlogPageTag(TaggedItemBase):
 
 
 class BlogPage(Page):
-    body = StreamField(DemoStreamBlock())
+    body = StreamField(BlogStreamBlock())
     tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
     date = models.DateField("Post date")
     feed_image = models.ForeignKey(
@@ -448,13 +442,13 @@ class BlogPage(Page):
         # Find closest ancestor which is a blog index
         return self.get_ancestors().type(BlogIndexPage).last()
 
-BlogPage.content_panels = [
-    FieldPanel('title', classname="full title"),
-    FieldPanel('date'),
-    StreamFieldPanel('body'),
-    InlinePanel('carousel_items', label="Carousel items"),
-    InlinePanel('related_links', label="Related links"),
-]
+    content_panels = [
+        FieldPanel('title', classname="full title"),
+        FieldPanel('date'),
+        StreamFieldPanel('body'),
+        InlinePanel('carousel_items', label="Carousel items"),
+        InlinePanel('related_links', label="Related links"),
+    ]
 
 BlogPage.promote_panels = Page.promote_panels + [
     ImageChooserPanel('feed_image'),

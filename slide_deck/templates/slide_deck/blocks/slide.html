@@ -2,7 +2,9 @@
 
 <section data-transition="{{ value.transition }}">
 	<section>
-		{% include_block value.image %}
+		{% if value.image %}
+			{% image value.image original %}
+		{% endif %}
 		{% include_block value.slide_content %}
 	</section>
 	{% if value.sub_slide %}
