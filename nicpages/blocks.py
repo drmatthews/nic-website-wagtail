@@ -1,3 +1,6 @@
+from django.conf import settings
+from django import forms
+
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailimages.blocks import ImageChooserBlock
 from wagtail.wagtaildocs.blocks import DocumentChooserBlock
@@ -176,7 +179,7 @@ class AlignedHTMLBlock(blocks.StructBlock):
     class Meta:
         icon = "code"        
 
-class DemoStreamBlock(blocks.StreamBlock):
+class BlogStreamBlock(blocks.StreamBlock):
     h2 = blocks.CharBlock(icon="title", classname="title")
     h3 = blocks.CharBlock(icon="title", classname="title")
     h4 = blocks.CharBlock(icon="title", classname="title")
@@ -186,3 +189,41 @@ class DemoStreamBlock(blocks.StreamBlock):
     pullquote = PullQuoteBlock()
     aligned_html = AlignedHTMLBlock(icon="code", label='Raw HTML')
     document = DocumentChooserBlock(icon="doc-full-inverse")
+
+class NicGalleryBlock(blocks.StreamBlock):
+    image = ImageChooserBlock()
+    caption = blocks.CharBlock()
+
+    class Meta:
+        icon='image'
+
+class NicPageStreamBlock(blocks.StreamBlock):
+    h1 = blocks.CharBlock(icon="title")
+    h2 = blocks.CharBlock(icon="title")
+    h3 = blocks.CharBlock(icon="title")
+    h4 = blocks.CharBlock(icon="title")
+    h5 = blocks.CharBlock(icon="title")
+    headline = HeadlineBlock()
+    centre_heading = CentreAlignHeadingBlock()
+    paragraph = blocks.RichTextBlock()
+    image = ImageChooserBlock()
+    image_responsive = ImageResponsiveBlock()
+    doc_with_preview = DocWithPreviewBlock()
+    home_video = HomePageVideoBlock(icon='media')
+    equipment_banner_row = EquipmentBannerRowBlock()
+    google_map = GoogleMapBlock()
+    two_columns = TwoColumnBlock()
+    image_gallery = NicGalleryBlock()
+    table = TableBlock(table_options=new_table_options)
+
+class BlogIndexStreamBlock(blocks.StreamBlock):
+    h1 = blocks.CharBlock(icon="title")
+    h2 = blocks.CharBlock(icon="title")
+    h3 = blocks.CharBlock(icon="title")
+    h4 = blocks.CharBlock(icon="title")
+    h5 = blocks.CharBlock(icon="title")
+    centre_heading = CentreAlignHeadingBlock()
+    headline = HeadlineBlock()
+    paragraph = blocks.RichTextBlock()
+    video = VideoBlock(icon='media')
+    home_video = VideoBlock(icon='media')
