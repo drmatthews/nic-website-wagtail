@@ -19,15 +19,19 @@ h1, h2, h3, h4, h5, h6,
     width: 100%;
     padding-bottom: 50px;
 }
+.content {
+    padding-top: 50px;
+}
 .container-fluid {
     max-width: 900px;
 }
 .hgroup-wrap {
     padding: 20px 0 15px;
-    background-color: #CF0000;
-    border-style: solid none solid none;
+    background-color: #a30000;
+/*    border-style: solid none solid none;
     border-color: #3c3d41;
     border-width: 3px 0px 1px 0px;
+*/
 }
 /* Logo, Title and Description */
 #site-logo {

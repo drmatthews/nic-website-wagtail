@@ -27,18 +27,18 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-    <link rel="stylesheet" href="{% static 'reveal.js/css/reveal.css' %}"/>
-    <link rel="stylesheet" href="{% static 'reveal.js/css/theme/night.css' %}" id="theme"/>
+    <link rel="stylesheet" href="{% static 'slide_deck/reveal.js/css/reveal.css' %}"/>
+    <link rel="stylesheet" href="{% static 'slide_deck/reveal.js/css/theme/night.css' %}" id="theme"/>
 
     <!-- Code syntax highlighting -->
-    <link rel="stylesheet" href="{% static 'reveal.js/lib/css/zenburn.css' %}"/>
+    <link rel="stylesheet" href="{% static 'slide_deck/reveal.js/lib/css/zenburn.css' %}"/>
 
     <!-- Printing and PDF exports -->
     <script>
       var link = document.createElement( 'link' );
       link.rel = 'stylesheet';
       link.type = 'text/css';
-      link.href = window.location.search.match( /print-pdf/gi ) ? "{% static 'reveal.js/css/print/pdf.css' %}" : "{% static 'vendor/reveal.js/css/print/paper.css' %}";
+      link.href = window.location.search.match( /print-pdf/gi ) ? "{% static 'slide_deck/reveal.js/css/print/pdf.css' %}" : "{% static 'slide_deck/reveal.js/css/print/paper.css' %}";
       document.getElementsByTagName( 'head' )[0].appendChild( link );
     </script>
 
@@ -59,8 +59,8 @@
       </div>
     </div>
 
-    <script src="{% static 'reveal.js/lib/js/head.min.js' %}"></script>
-    <script src="{% static 'reveal.js/js/reveal.js' %}"></script>
+    <script src="{% static 'slide_deck/reveal.js/lib/js/head.min.js' %}"></script>
+    <script src="{% static 'slide_deck/reveal.js/js/reveal.js' %}"></script>
     <script>
       // Full list of configuration options available at:
       // https://github.com/hakimel/reveal.js#configuration
@@ -77,12 +77,12 @@
 
         // Optional reveal.js plugins
         dependencies: [
-          { src: '{% static "reveal.js/lib/js/classList.js" %}', condition: function() { return !document.body.classList; } },
-          { src: '{% static "reveal.js/plugin/markdown/marked.js" %}', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: '{% static "reveal.js/plugin/markdown/markdown.js" %}', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-          { src: '{% static "reveal.js/plugin/highlight/highlight.js" %}', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-          { src: '{% static "reveal.js/plugin/zoom-js/zoom.js" %}', async: true },
-          { src: '{% static "reveal.js/plugin/notes/notes.js" %}', async: true }
+          { src: '{% static "slide_deck/reveal.js/lib/js/classList.js" %}', condition: function() { return !document.body.classList; } },
+          { src: '{% static "slide_deck/reveal.js/plugin/markdown/marked.js" %}', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '{% static "slide_deck/reveal.js/plugin/markdown/markdown.js" %}', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '{% static "slide_deck/reveal.js/plugin/highlight/highlight.js" %}', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '{% static "slide_deck/reveal.js/plugin/zoom-js/zoom.js" %}', async: true },
+          { src: '{% static "slide_deck/reveal.js/plugin/notes/notes.js" %}', async: true }
         ]
       });
 
