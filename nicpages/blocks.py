@@ -1,5 +1,6 @@
 from django.conf import settings
 from django import forms
+from django.utils.html import format_html
 
 from wagtail.wagtailcore import blocks
 from wagtail.wagtailimages.blocks import ImageChooserBlock
