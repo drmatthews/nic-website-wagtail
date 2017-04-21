@@ -18,7 +18,7 @@
 	        {% elif block.block_type == 'h5' %}
 	            <h5>{{ block.value }}</h5>
 	        {% elif block.block_type == 'image_gallery' %}           
-		        {% include "includes/gallery.html" with image_gallery=block.value only %}
+		        {% include "nicpages/includes/gallery.html" with image_gallery=block.value only %}
 	        {% else %}
 	            <section class="block-{{ block.block_type }}">
 	                {% include_block block %}
@@ -29,7 +29,7 @@
 	<section>
 		{% if page.blogs %}
 			{% for blog in page.blogs %}
-				{% include "includes/blog_list_item.html" %}
+				{% include "nicpages/includes/blog_list_item.html" %}
 			{% endfor %}
 		{% endif %}
 	</section>
