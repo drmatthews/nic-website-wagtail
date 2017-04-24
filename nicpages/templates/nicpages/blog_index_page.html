@@ -3,7 +3,7 @@
 {% load wagtailcore_tags %}
 
 {% block content %}
-    {% include "includes/intro.html" with intro=self.intro only %}
+    {% include "nicpages/includes/intro.html" with intro=self.intro only %}
 
     <section>
         {% for block in page.body %}
