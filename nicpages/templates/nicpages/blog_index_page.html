@@ -33,7 +33,7 @@
         {# Uses serve method defined in models.py - allows for paging if required #}
         {# See also standard index for creating a listing with a tag #}
         {% for blog in blogs %}
-            {% include "includes/blog_list_item.html" %}
+            {% include "nicpages/includes/blog_list_item.html" %}
         {% empty %}
             No blogs found
         {% endfor %}
@@ -57,5 +57,5 @@
         </div>
     </div>
 
-    {% include "includes/related_links.html" with related_links=self.related_links.all only %}
+    {% include "nicpages/includes/related_links.html" with related_links=self.related_links.all only %}
 {% endblock %}
