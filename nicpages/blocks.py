@@ -190,6 +190,7 @@ class BlogStreamBlock(blocks.StreamBlock):
     pullquote = PullQuoteBlock()
     aligned_html = AlignedHTMLBlock(icon="code", label='Raw HTML')
     document = DocumentChooserBlock(icon="doc-full-inverse")
+    doc_with_preview = DocWithPreviewBlock()
 
 class NicGalleryBlock(blocks.StreamBlock):
     image = ImageChooserBlock()
