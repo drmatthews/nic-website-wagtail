@@ -78,7 +78,7 @@ class DocWithPreviewBlock(blocks.StructBlock):
     doc = DocumentChooserBlock()        
 
     class Meta:
-        template = 'shared_blocks/doc_with_preview.html'
+        template = 'wiki/blocks/doc_with_preview.html'
         icon = 'doc-full'
 
 class DocWithPreviewRowBlock(blocks.StructBlock):
@@ -86,7 +86,7 @@ class DocWithPreviewRowBlock(blocks.StructBlock):
     second_doc = DocWithPreviewBlock()
 
     class Meta:
-        template = 'shared_blocks/doc_with_preview_row.html'
+        template = 'wiki/blocks/doc_with_preview_row.html'
         icon = 'doc-full'        
 
 class WikiPage(MenuPage):
