@@ -26,12 +26,4 @@
 	        {% endif %}
 	    {% endfor %}
 	</section>
-	<section>
-		{% if page.blogs %}
-			<h3>Latest news</h3>
-			{% for blog in page.blogs %}
-				{% include "nicpages/includes/blog_list_item.html" %}
-			{% endfor %}
-		{% endif %}
-	</section>
 {% endblock %}

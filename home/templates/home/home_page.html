@@ -1,11 +1,23 @@
-{% extends "base.html" %}
+{% extends "nicpages/base.html" %}
 
-{% block body_class %}template-homepage{% endblock %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-nicpage{% endblock %}
 
 {% block content %}
-    <h1>Welcome to your new Wagtail site!</h1>
-
-    <p>You can access the admin interface <a href="{% url 'wagtailadmin_home' %}">here</a> (make sure you have run "./manage.py createsuperuser" in the console first).
-
-    <p>If you haven't already given the documentation a read, head over to <a href="http://docs.wagtail.io/">http://docs.wagtail.io</a> to start building on Wagtail</p>
+	<section>
+	    {% for block in page.body %}
+            <section class="block-{{ block.block_type }}">
+                {% include_block block %}
+            </section>
+	    {% endfor %}
+	</section>
+	<section>
+		{% if page.blogs %}
+			<h3>Latest news</h3>
+			{% for blog in page.blogs %}
+				{% include "nicpages/includes/blog_list_item.html" %}
+			{% endfor %}
+		{% endif %}
+	</section>
 {% endblock %}

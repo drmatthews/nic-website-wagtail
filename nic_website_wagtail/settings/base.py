@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['localhost','127.0.0.1','159.92.63.125']
 # Application definition
 
 INSTALLED_APPS = [
-    #'home',
+    'home',
     'nicpages',
     'search',
     'slide_deck',
