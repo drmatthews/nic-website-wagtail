@@ -5,7 +5,7 @@ from models import BlogPage
 
 class BlogFeed(Feed):
     title = "Nikon Imaging Centre news articles"
-    link = "/blog-feed/"
+    link = "/news-feed/"
     description = "Nikon Imaging Centre @ King's news as it is published"
 
     def items(self):

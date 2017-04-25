@@ -19,7 +19,7 @@ urlpatterns = [
 
     url(r'^search/$', search_views.search, name='search'),
 
-    url(r'blog-feed/$', BlogFeed(), name='blog-feed'),
+    url(r'news-feed/$', BlogFeed(), name='news-feed'),
 
     url(r'', include(wagtail_urls)),
 ]
