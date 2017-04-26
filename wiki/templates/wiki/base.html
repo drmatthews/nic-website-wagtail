@@ -50,27 +50,20 @@
             $(function () {
               $('[data-toggle="tooltip"]').tooltip()
             })
-        </script>        
-        <script type="text/javascript">
-            $(document).ready(function () {
 
-                var menu = $('#main-nav');
-                var origOffsetY = menu.offset().top;
+            var affixElement = '#main-nav';
 
-                function scroll() {
-                    if ($(window).scrollTop() >= origOffsetY) {
-                        $(menu).addClass('navbar-fixed-top');
-                    } else {
-                        $(menu).removeClass('navbar-fixed-top');
-                    }
-
-
+            $(affixElement).affix({
+              offset: {
+                // Distance of between element and top page
+                top: function () {
+                  return (this.top = $(affixElement).offset().top)
                 }
-
-                document.onscroll = scroll;
-
+              }
             });
-        </script>
+
+
+        </script>        
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
