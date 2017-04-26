@@ -6,6 +6,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from django import forms
 from django.utils.html import format_html
+from django.utils.encoding import force_text
 from django.utils.safestring import mark_safe
 
 from wagtail.wagtailcore import blocks
@@ -75,7 +76,10 @@ class CodeBlock(blocks.StructBlock):
 
 class DocWithPreviewBlock(blocks.StructBlock):
     preview = ImageChooserBlock()
-    doc = DocumentChooserBlock()        
+    doc = DocumentChooserBlock()
+
+    def get_searchable_content(self, value):
+        return [force_text(value)]            
 
     class Meta:
         template = 'wiki/blocks/doc_with_preview.html'
@@ -84,6 +88,9 @@ class DocWithPreviewBlock(blocks.StructBlock):
 class DocWithPreviewRowBlock(blocks.StructBlock):
     first_doc = DocWithPreviewBlock()
     second_doc = DocWithPreviewBlock()
+
+    def get_searchable_content(self, value):
+        return [force_text(value)]
 
     class Meta:
         template = 'wiki/blocks/doc_with_preview_row.html'
