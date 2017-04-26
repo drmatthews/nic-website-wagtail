@@ -14,7 +14,7 @@
     </form>
 
     {% if search_results %}
-        <ul>
+        <ul id="search-results">
             {% for result in search_results %}
                 <li>
                     <h4><a href="{% pageurl result %}">{{ result }}</a></h4>

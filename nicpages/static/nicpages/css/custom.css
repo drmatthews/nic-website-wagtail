@@ -267,6 +267,10 @@ label[for="nav-trigger"] {
   padding-bottom: 40px;
 }
 
+#search-results {
+  list-style-type: none;
+}
+
 /**
  * Posts
  */
