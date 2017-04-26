@@ -110,6 +110,10 @@ class WikiPage(MenuPage):
         StreamFieldPanel('body'),
     ]
 
+    search_fields = Page.search_fields + [ # Inherit search_fields from Page
+        index.SearchField('body'),
+    ]     
+
     def get_context(self, request):
         context = super(WikiPage, self).get_context(request)
 
