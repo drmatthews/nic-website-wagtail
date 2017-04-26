@@ -109,6 +109,10 @@ class NicPage(Page):
         StreamFieldPanel('body'),
     ]
 
+    search_fields = Page.search_fields + [ # Inherit search_fields from Page
+        index.SearchField('body'),
+    ]    
+
     def blogs(self):
         # Get list of live blog pages that are descendants of the ResourceIndexPage page
         blogs = BlogPage.objects.all().order_by('-date')
