@@ -21,7 +21,7 @@
                         {% if menu_item.has_children_in_menu %}
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">{{ menu_item.text }} <b class="caret"></b></a>
                             <li><a href="{{ menu_item.href }}">{{ menu_item.text }}</a></li>
-                            {% sub_menu template='wiki/tags/header_children_menu.html' apply_active_classes=true %}
+                            {% sub_menu menu_item template='wiki/tags/header_children_menu.html' apply_active_classes=true %}
                         {% else %}
                             <a href="{{ menu_item.href }}">{{ menu_item.text }}</a>
                         {% endif %}
