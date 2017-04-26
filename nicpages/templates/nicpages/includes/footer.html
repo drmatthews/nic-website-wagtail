@@ -2,5 +2,17 @@
 <footer>
 	<div class="site-footer">
 		<img id="big-footer" src="{% static 'img/footer_kcl.png' %}" alt="Nikon Instruments"/>
+		<div id="footer-search">
+            <form role="search" action="{% url 'search_nic' %}" method="get">
+                <div class="input-group">
+                    <input type="text" name="query" class="form-control" placeholder="Search…" value="{{ search_query }}" />
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>			
+		</div>
 	</div>
 </footer>

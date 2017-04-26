@@ -10,6 +10,7 @@ from wagtail.wagtailsearch.models import Query
 def search(request):
     search_query = request.GET.get('query', None)
     page = request.GET.get('page', 1)
+    print page
 
     # Search
     if search_query:
@@ -30,7 +31,7 @@ def search(request):
     except EmptyPage:
         search_results = paginator.page(paginator.num_pages)
 
-    return render(request, 'search/search.html', {
+    return render(request, 'search_wiki/search.html', {
         'search_query': search_query,
         'search_results': search_results,
     })

@@ -4,7 +4,9 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
 
-from search import views as search_views
+from search_nic import views as search_nic_views
+from search_wiki import views as search_wiki_views
+
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
@@ -17,7 +19,8 @@ urlpatterns = [
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),
 
-    url(r'^search/$', search_views.search, name='search'),
+    url(r'^search_nic/$', search_nic_views.search, name='search_nic'),
+    url(r'^search_wiki/$', search_wiki_views.search, name='search_wiki'),
 
     url(r'news-feed/$', BlogFeed(), name='news-feed'),
 

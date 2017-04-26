@@ -415,13 +415,21 @@ td:last-child {
 
   #big-footer {
     display: block;
-  }    
+    float: left;
+  }
 
   .site-footer {
     display: block;
     height: 60px;
     width: 100%;
     background-color: #EB2F2D;    
+  }
+
+  #footer-search {
+    display: inline-block;
+    float: right;
+    padding-top: 15px;
+    padding-right: 20px;
   }
 
   .page {

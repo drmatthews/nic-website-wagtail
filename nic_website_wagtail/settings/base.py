@@ -35,7 +35,8 @@ ALLOWED_HOSTS = ['localhost','127.0.0.1','159.92.63.125']
 INSTALLED_APPS = [
     'home',
     'nicpages',
-    'search',
+    'search_nic',
+    'search_wiki',
     'slide_deck',
     'wiki',
 

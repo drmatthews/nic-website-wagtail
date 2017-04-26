@@ -27,7 +27,7 @@
                     </li>       
                 {% endfor %}
             </ul>
-            <form class="navbar-form navbar-right" role="search" action="{% url 'search' %}" method="get">
+            <form class="navbar-form navbar-right" role="search" action="{% url 'search_wiki' %}" method="get">
                 <div class="input-group">
                     <input type="text" name="query" class="form-control" placeholder="Search…" value="{{ search_query }}" />
                     <div class="input-group-btn">
