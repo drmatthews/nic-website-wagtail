@@ -17,7 +17,6 @@
         <div class="navbar-collapse collapse" id="nicnavbar">
             <ul class="nav navbar-nav">
                 {% for menu_item in menu_items %}
-                    {{ menu_item.has_children_in_menu }}
                     <li class="{% if menu_item.has_children_in_menu %}dropdown{% endif %}{% if menu_item.active_class %} active{% endif %}">
                         {% if menu_item.has_children_in_menu %}
                             <a class="dropdown-toggle" href="{{ menu_item.href }}" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ menu_item.text }} <b class="caret"></b></a>
