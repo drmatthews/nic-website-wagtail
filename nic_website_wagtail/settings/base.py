@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'wagtail.wagtailadmin',
     'wagtail.wagtailcore',
     'wagtail.contrib.table_block',
+    'wagtail_pgsearchbackend',
 
     'wagtailmedia',
 
@@ -111,6 +112,14 @@ WSGI_APPLICATION = 'nic_website_wagtail.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {'default' : env.db("NIC_DATABASE_URL")}
+
+# searching
+WAGTAILSEARCH_BACKENDS = {
+    'default': {
+        'BACKEND': 'wagtail_pgsearchbackend.backend',
+        'SEARCH_CONFIG': 'english'
+    }
+}
 
 
 # Internationalization
