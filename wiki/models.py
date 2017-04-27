@@ -36,6 +36,24 @@ from pygments.lexers import get_lexer_by_name
 
 GOOGLE_MAPS_KEY = settings.GOOGLE_MAPS_KEY
 
+class VideoBlock(AbstractMediaChooserBlock):
+    def render_basic(self, value, context=None):
+        if not value:
+            return ''
+
+        player_code = '''
+        <div>
+            <video width="320" height="240" controls>
+                <source src="{0}" type="video/mp4">
+                <source src="{0}" type="video/webm">
+                <source src="{0}" type="video/ogg">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        '''
+
+        return format_html(player_code, value.file.url)
+
 class CodeBlock(blocks.StructBlock):
     """
     Code Highlighting Block
@@ -110,6 +128,7 @@ class WikiPage(MenuPage):
         ('doc_with_preview', DocWithPreviewBlock()),
         ('doc_with_preview_row', DocWithPreviewRowBlock()),
         ('code', CodeBlock()),
+        ('video', VideoBlock(icon='media')),
     ],null=True,blank=True)
 
     content_panels = Page.content_panels + [
