@@ -43,7 +43,7 @@ class VideoBlock(AbstractMediaChooserBlock):
 
         player_code = '''
         <div>
-            <video width="320" height="240" controls>
+            <video width="640" height="480" controls>
                 <source src="{0}" type="video/mp4">
                 <source src="{0}" type="video/webm">
                 <source src="{0}" type="video/ogg">
