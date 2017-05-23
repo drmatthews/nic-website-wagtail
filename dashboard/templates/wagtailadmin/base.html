@@ -1,0 +1,13 @@
+{% extends "wagtailadmin/base.html" %}
+{% load staticfiles %}
+
+{% block extra_css %}
+	<style type="text/css">
+		#nic-logo {
+			width :100%;
+		}
+	</style>
+{% endblock %}
+{% block branding_logo %}
+    <img id="nic-logo" src="{% static 'img/nic-banner-wiki-logo.png' %}" alt="Custom Project" />
+{% endblock %}

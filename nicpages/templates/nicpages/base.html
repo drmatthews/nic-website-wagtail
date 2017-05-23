@@ -12,7 +12,7 @@
         <title>{% block title %}{% if self.seo_title %}{{ site_root.title }} | {{ self.seo_title }}{% else %}{{ site_root.title }} | {{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-
+        <script src="https://use.fontawesome.com/aef70a7e70.js"></script>
         {# Global stylesheets #}
         <link rel="stylesheet" type="text/css" href="{% static 'nicpages/css/vendor/fotorama.css' %}">
         <!--<link rel="stylesheet" type="text/css" href="{% static 'css/vendor/normalize.css' %}">
@@ -55,7 +55,18 @@
             {% include "nicpages/includes/footer.html" %}
           </div>
         </div>
-
+        <style type="text/css">
+            .wagtail-userbar-trigger, .wagtail-icon-wagtail:before {
+                content: "\f013";
+                font-family: FontAwesome;
+                font-style: normal;
+                font-weight: normal;
+                text-decoration: inherit;
+            /*--adjust as necessary--*/
+                color: #000;
+                font-size: 18px;
+            }
+        </style>
         {# Global javascript #}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->
