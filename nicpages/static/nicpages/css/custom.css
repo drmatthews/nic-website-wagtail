@@ -431,8 +431,9 @@ td:last-child {
   }
 
   #footer-search {
-    display: inline-block;
-    float: right;
+    width: 30%;
+    position: absolute;
+    right: 0px;
     padding-top: 15px;
     padding-right: 20px;
   }
