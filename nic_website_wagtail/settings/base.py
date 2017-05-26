@@ -24,7 +24,11 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 SECRET_KEY = env("NIC_SECRET_KEY")
 GOOGLE_MAPS_KEY = env("GOOGLE_MAP_API_KEY")
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1','159.92.63.125']
+ALLOWED_HOSTS = ['localhost',
+                 '127.0.0.1',
+                 '159.92.63.125',
+                 'nikweb.biohealth.kcl.ac.uk',
+                 'nic.kcl.ac.uk']
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
