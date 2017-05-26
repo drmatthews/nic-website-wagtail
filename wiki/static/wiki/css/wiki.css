@@ -85,8 +85,8 @@ h1, h2, h3, h4, h5, h6,
 
 .footer-bs .footer-nav ul.pages { list-style:none; padding:0px; }
 .footer-bs .footer-nav ul.pages li { padding:5px 0px;}
-.footer-bs .footer-nav ul.pages a { color:rgba(255,255,255,1.00); font-weight:bold; text-transform:uppercase; }
-.footer-bs .footer-nav ul.pages a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
+.footer-bs .footer-nav ul.pages a { color:rgba(255,255,255,0.8);}
+.footer-bs .footer-nav ul.pages a:hover { color:rgba(255,255,255,0.60); text-decoration:none; }
 .footer-bs .footer-nav h4 {
     font-size: 11px;
     text-transform: uppercase;
