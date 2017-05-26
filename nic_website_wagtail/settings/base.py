@@ -28,7 +28,8 @@ ALLOWED_HOSTS = ['localhost',
                  '127.0.0.1',
                  '159.92.63.125',
                  'nikweb.biohealth.kcl.ac.uk',
-                 'nic.kcl.ac.uk']
+                 'nic.kcl.ac.uk',
+                 'web.portal.gamigo.com']
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
