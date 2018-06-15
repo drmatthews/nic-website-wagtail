@@ -12,3 +12,10 @@ try:
     from .local import *
 except ImportError:
     pass
+
+WAGTAILEMBEDS_FINDERS = [
+    {
+        'class': 'nic_website_wagtail.embeds.omero_embed.OmeroFinder',
+        # Any other options will be passed as kwargs to the __init__ method
+    }
+]

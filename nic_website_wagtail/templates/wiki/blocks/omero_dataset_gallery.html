@@ -1,0 +1,17 @@
+{% load wagtailcore_tags %}
+<h4>{{ value.gallery.title }}</h4>
+<a href="{{ value.gallery.url }}">{{ value.thumbnail }}</a>
+{% for item in value %}
+    {% include_block item.bound_blocks.thumbail %}
+{% endfor %}
+<!-- <div class="row" id="gallery-thumb">
+{% for dataset in value %}
+    <div class="item-container col-md-3">
+      {{ dataset.thumbnail }}
+    </div>
+  {% if forloop.counter|divisibleby:4 %}
+</div>
+<div class="row" id="gallery-thumb">
+  {% endif %}
+{% endfor %}
+</div> -->

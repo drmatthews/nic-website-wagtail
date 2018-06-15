@@ -39,27 +39,26 @@ ALLOWED_HOSTS = ['localhost',
 # Application definition
 
 INSTALLED_APPS = [
-    'dashboard',
-    'home',
-    'nicpages',
-    'search_nic',
-    'search_wiki',
-    'slide_deck',
-    'wiki',
+    'nic_website_wagtail.dashboard',
+    'nic_website_wagtail.home',
+    'nic_website_wagtail.nicpages',
+    'nic_website_wagtail.search_nic',
+    'nic_website_wagtail.search_wiki',
+    'nic_website_wagtail.slide_deck',
+    'nic_website_wagtail.wiki',
 
-    'wagtail.wagtailforms',
-    'wagtail.wagtailredirects',
-    'wagtail.wagtailembeds',
-    'wagtail.wagtailsites',
-    'wagtail.wagtailusers',
-    'wagtail.wagtailsnippets',
-    'wagtail.wagtaildocs',
-    'wagtail.wagtailimages',
-    'wagtail.wagtailsearch',
-    'wagtail.wagtailadmin',
-    'wagtail.wagtailcore',
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail.core',
     'wagtail.contrib.table_block',
-    'wagtail_pgsearchbackend',
 
     'wagtailmedia',
 
@@ -72,7 +71,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mod_wsgi.server',
     'wagtailmenus',
 ]
 
@@ -86,8 +84,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 
-    'wagtail.wagtailcore.middleware.SiteMiddleware',
-    'wagtail.wagtailredirects.middleware.RedirectMiddleware',
+    'wagtail.core.middleware.SiteMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
 ROOT_URLCONF = 'nic_website_wagtail.urls'
@@ -95,10 +93,7 @@ ROOT_URLCONF = 'nic_website_wagtail.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(PROJECT_DIR, 'templates'),
-            'wiki/templates',
-        ],
+        'DIRS': ['nic_website_wagtail/templates', ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -123,7 +118,7 @@ DATABASES = {'default' : env.db("NIC_DATABASE_URL")}
 # searching
 WAGTAILSEARCH_BACKENDS = {
     'default': {
-        'BACKEND': 'wagtail_pgsearchbackend.backend',
+        'BACKEND': 'wagtail.search.backends.db',
         'SEARCH_CONFIG': 'english'
     }
 }
