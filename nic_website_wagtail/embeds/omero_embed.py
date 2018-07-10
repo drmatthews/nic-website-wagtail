@@ -20,16 +20,16 @@ class OmeroFinder(EmbedFinder):
 
         This is the part that may make requests to external APIs.
         """
-        img_id = url[-1]
+        img_id = url[url.find('/') + 1:]
         if 'image' in url:
             img_anchor = (
-                '<a href="http://localhost:4080/webgateway/'
-                'img_detail/{0}/">'.format(img_id)
+                '<a href="http://localhost:4080/public_iviewer/'
+                '?images={0}/">'.format(img_id)
             )
             thumb_anchor = (
                 '<img class="img-thumbnail" '
                 'src="http://localhost:4080/webgateway/'
-                'render_thumbnail/{0}/128/128"/></a>'.format(img_id)
+                'render_thumbnail/{0}/200/200"/></a>'.format(img_id)
             )
             metadata_anchor = (
                 '<p>'
@@ -43,7 +43,7 @@ class OmeroFinder(EmbedFinder):
             thumb_anchor = (
                 '<img class="img-thumbnail" '
                 'src="http://localhost:4080/webgateway/'
-                'render_thumbnail/{0}/128/128"/>'.format(img_id)
+                'render_thumbnail/{0}/200/200"/>'.format(img_id)
             )
             html = thumb_anchor
         return {
@@ -51,7 +51,7 @@ class OmeroFinder(EmbedFinder):
             'author_name': "Dan",
             'provider_name': "OMERO server",
             'type': "photo",
-            'width': 128,
-            'height': 128,
+            'width': 200,
+            'height': 200,
             'html': html
         }

@@ -26,20 +26,22 @@
 	        {% endif %}
 	    {% endfor %}
 
+
+		<section class="block-{{ block.block_type }}">
 	    <div class="row" id="gallery-thumb">
-	    {% for block in page.body %}
-		    {% if block.block_type == 'OMERO_Dataset' %}
-			    <section class="block-{{ block.block_type }}">
-					<div class="item-container col-md-3">
-				   		{% include_block block %}
-					</div>
-					{% if forloop.counter|divisibleby:4 %}
-					</div>
-					<div class="row" id="gallery-thumb">
+	    	
+			    {% for block in page.body %}
+				    {% if block.block_type == 'OMERO_Dataset' %}
+							<div class="item-container col-md-6">
+						   		{% include_block block %}
+							</div>
+							{% if forloop.counter|divisibleby:2 %}
+							</div>
+							<div class="row" id="gallery-thumb">
+							{% endif %}
 					{% endif %}
-				</section>
-			{% endif %}
-	    {% endfor %}
+			    {% endfor %}
 		</div>
+		</section>
 	</section>
 {% endblock %}

@@ -23,10 +23,10 @@
 <div class="row" id="gallery-thumb">
 
 {% for img in value %}
-    <div class="item-container col-md-3">
+    <div class="item-container col-md-6">
       {{ img }}
     </div>
-  {% if forloop.counter|divisibleby:4 %}
+  {% if forloop.counter|divisibleby:2 %}
 </div>
 <div class="row" id="gallery-thumb">
   {% endif %}

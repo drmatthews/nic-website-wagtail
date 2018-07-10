@@ -140,6 +140,8 @@ class OmeroEmbedValue(EmbedValue):
 
 class OmeroEmbedBlock(blocks.IntegerBlock):
     def __init__(self, omero_type='image', **kwargs):
+        kwargs['min_value'] = 0
+        kwargs['max_value'] = 10000
         super().__init__(**kwargs)
 
         self.omero_type = omero_type
@@ -171,7 +173,7 @@ class OmeroEmbedBlock(blocks.IntegerBlock):
         if value is None:
             return ''
         else:
-            return int(value.url[-1])
+            return int(value.url[value.url.find('/') + 1:])
 
     def value_for_form(self, value):
         # the value to be handled by the IntegerField is a
@@ -180,7 +182,7 @@ class OmeroEmbedBlock(blocks.IntegerBlock):
         if value is None:
             return None
         else:
-            return int(value.url[-1])
+            return int(value.url[value.url.find('/') + 1:])
 
     def value_from_form(self, value):
         # convert the value returned from the form
@@ -204,6 +206,7 @@ class OmeroDatasetBlock(blocks.StructBlock):
         ('a1_up_confocal', 'A1 Upright Confocal'),
         ('a1r_confocal', 'A1R Confocal'),
         ('a1r_mp', 'A1R Multi-photon'),
+        ('nsim', 'N-SIM'),
     )
 
     microscope = blocks.ChoiceBlock(choices=MICROSCOPE_CHOICES)
