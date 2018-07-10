@@ -24,6 +24,8 @@ urlpatterns = [
 
     url(r'news-feed/$', BlogFeed(), name='news-feed'),
 
+    url('^sitemap\.xml$', sitemap),
+
     url(r'', include(wagtail_urls)),
 ]
 
