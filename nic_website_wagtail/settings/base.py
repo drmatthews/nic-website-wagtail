@@ -32,6 +32,16 @@ ALLOWED_HOSTS = ['localhost',
                  'nic.kcl.ac.uk',
                  'www.nic.kcl.ac.uk']
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
+DEFAULT_FROM_EMAIL = 'NIC@KCL <NIC@nic.kcl.ac.uk>'
+SERVER_EMAIL = 'nic@nic.kcl.ac.uk'
+
+ADMINS = [('Daniel Matthews', 'daniel.r.matthews@kcl.ac.uk')]
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
@@ -60,6 +70,7 @@ INSTALLED_APPS = [
     'wagtail.wagtailcore',
     'wagtail.contrib.table_block',
     'wagtail_pgsearchbackend',
+    'wagtail.contrib.wagtailsitemaps',
 
     'wagtailmedia',
 
@@ -72,7 +83,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sitemaps',
     'mod_wsgi.server',
     'wagtailmenus',
 ]
@@ -169,4 +179,4 @@ WAGTAIL_SITE_NAME = "nic_website_wagtail"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+BASE_URL = 'https://nic.kcl.ac.uk'

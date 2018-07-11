@@ -10,6 +10,7 @@ from search_wiki import views as search_wiki_views
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
+from wagtail.contrib.wagtailsitemaps.views import sitemap
 
 from nicpages.feed import BlogFeed
 
