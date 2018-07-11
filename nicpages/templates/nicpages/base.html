@@ -19,7 +19,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         {% get_site_root as site_root %}
         <title>{% block title %}{% if self.seo_title %}{{ site_root.title }} | {{ self.seo_title }}{% else %}{{ site_root.title }} | {{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
-        <meta name="description" content="" />
+        <meta name="description" content="{{ self.search_description }}" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script src="https://use.fontawesome.com/aef70a7e70.js"></script>
         {# Global stylesheets #}

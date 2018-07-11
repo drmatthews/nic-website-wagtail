@@ -124,6 +124,7 @@ class NicPage(Page):
         context['blogs'] = self.blogs()
         return context      
 
+NicPage.promote_panels = Page.promote_panels
 # Blog index page
 
 class BlogIndexPageRelatedLink(Orderable, RelatedLink):
