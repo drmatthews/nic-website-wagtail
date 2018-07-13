@@ -1,10 +1,11 @@
 <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key={{ google_maps_key }}'></script>
 
-<div style='overflow:hidden;height:{{ self.height }}px;width:{{ self.width }}px;padding-bottom:20px'>
-	<div id='gmap_canvas' style='height:{{ self.height }}px;width:{{ self.width }}px;'></div>
-	<style>
-		#gmap_canvas img{max-width:none!important;background:none!important}
-	</style>
+<div class='row'>
+		
+		<div id='gmap_canvas' style='height:400px;width:100%;'></div>
+		<style>
+			#gmap_canvas img{max-width:none!important;background:none!important}
+		</style>
 </div>
 
 <script type='text/javascript'>

@@ -37,11 +37,9 @@ class GoogleMapBlock(blocks.StructBlock):
     map_long = blocks.CharBlock(required=True, max_length=255)
     map_lat = blocks.CharBlock(required=True, max_length=255)
     map_zoom_level = blocks.CharBlock(default=14, required=True, max_length=3)
-    width = blocks.IntegerBlock(required=True)
-    height = blocks.IntegerBlock(required=True)
 
-    def get_context(self, value):
-        context = super(GoogleMapBlock, self).get_context(value)
+    def get_context(self, value, parent_context=None):
+        context = super().get_context(value, parent_context=parent_context)
         context['google_maps_key'] = GOOGLE_MAPS_KEY
         return context
 

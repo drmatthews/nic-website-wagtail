@@ -10,6 +10,7 @@ from nic_website_wagtail.search_wiki import views as search_wiki_views
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
+from wagtail.contrib.sitemaps.views import sitemap
 
 from nic_website_wagtail.nicpages.feed import BlogFeed
 
@@ -23,6 +24,8 @@ urlpatterns = [
     url(r'^search_wiki/$', search_wiki_views.search, name='search_wiki'),
 
     url(r'news-feed/$', BlogFeed(), name='news-feed'),
+
+    url('^sitemap\.xml$', sitemap),
 
     url(r'', include(wagtail_urls)),
 ]
