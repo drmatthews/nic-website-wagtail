@@ -27,6 +27,7 @@ GOOGLE_MAPS_KEY = os.environ["GOOGLE_MAP_API_KEY"]
 ALLOWED_HOSTS = ['localhost',
                  '127.0.0.1',
                  '193.61.207.57',
+                 '159.92.63.125',
                  'nikweb.biohealth.kcl.ac.uk',
                  'www.nikweb.biohealth.kcl.ac.uk',
                  'nic.kcl.ac.uk',
