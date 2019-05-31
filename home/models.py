@@ -52,7 +52,7 @@ class HomePage(Page):
 
     def blogs(self):
         # Get list of live blog pages that are descendants of the ResourceIndexPage page
-        blogs = BlogPage.objects.all().order_by('-date')
+        blogs = BlogPage.objects.live().order_by('-date')
 
         return blogs[0:1]
 
