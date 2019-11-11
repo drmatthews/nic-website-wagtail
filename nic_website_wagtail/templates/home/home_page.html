@@ -1,16 +1,102 @@
 {% extends "nicpages/base.html" %}
 
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags %}
 
 {% block body_class %}template-nicpage{% endblock %}
 
 {% block content %}
+	<div class="container-fluid" id="carousel-container">
+		<div class="container">
+			<div class="bd-example">
+				<div id="galleryCaptions" class="carousel slide" data-ride="carousel">
+					<!-- <ol class="carousel-indicators">
+						{% for item in page.gallery_images.all %}
+							{% if forloop.first %}
+								<li data-target="#galleryCaptions" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
+							{% else %}
+								<li data-target="#galleryCaptions" data-slide-to="{{ forloop.counter0 }}"></li>
+							{% endif %}
+						{% endfor %}
+					</ol> -->
+					<div class="carousel-inner">
+						{% for item in page.gallery_images.all %}
+							{% if forloop.first %}
+								<div class="carousel-item active">
+							{% else %}
+								<div class="carousel-item">
+							{% endif %}
+									{% image item.image original class="d-block w-100" alt="..." %}
+									<!-- <div class="carousel-caption d-none d-md-block">
+										<h1>{{ item.caption }}</h1>
+									</div>									 -->
+								</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+			<div class="covertext">
+				<div class="col-lg-10" style="float:none; margin:0 auto;">
+					<h1 class="display-3 title">{{ self.banner_title }}</h1>
+					<div class="lead subtitle">{{ self.banner_subtitle|richtext }}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<section class="page-section py-5 bg-light" id="mission">
+		<div class="container">
+			<h2>Mission</h2>
+		</div>
+	</section>
+
+	<section class="page-section py-5 bg-light" id="access">
+			<div class="container">
+				<h2>Access</h2>
+			</div>
+		</section>
+
+	<section class="page-section py-5 bg-light" id="systems">
+		<div class="container">
+			<h1 class="display-4">Systems available</h1>
+			<div class="row">
+				{% for item in page.systems.all %}
+					<div class="col-md-4">
+						<div class="card mb-4 shadow-sm">
+							{% image item.image height-348 class="card-img-top" alt="..." %}
+							<div class="card-body">
+								<h5 class="card-title">{{ item.title }}</h5>
+								<p class="card-text">{{ item.caption }}</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="btn-group">
+										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<h1 class="display-4">Corporate Partners & Contributors</h1>
+			<div class="row">
+				{% for item in page.suppliers.all %}
+					<div class="col-md-4 supplier">
+						{% image item.image max-380x200 %}
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+
+	<section class="page-section py-5" id="contact">
+		<div id='map' style='height:{{ self.height }}px; width:100%;'></div>
+	</section>
+
 	<section>
-	    {% for block in page.body %}
-            <section class="block-{{ block.block_type }}">
-                {% include_block block %}
-            </section>
-	    {% endfor %}
+		{% for block in page.body %}
+			<section class="block-{{ block.block_type }}">
+				{% include_block block %}
+			</section>
+		{% endfor %}
 	</section>
 	<section>
 		{% if page.blogs %}
@@ -20,4 +106,32 @@
 			{% endfor %}
 		{% endif %}
 	</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+		// Initialize and add the map
+	function initMap() {
+		var pos = {lat: {{ self.map_lat }}, lng:{{ self.map_long }}};
+		var myOptions = {
+			zoom: {{ self.map_zoom_level }},
+			center: pos,
+		};
+		
+		var map = new google.maps.Map(
+			document.getElementById('map'), myOptions);
+		var marker = new google.maps.Marker({position: pos, map: map});
+		var infowindow = new google.maps.InfoWindow({
+			content:'<strong>{{ self.map_title }}</strong><br>{{ self.street }}<br>{{ self.postcode }} {{ self.city }}<br>'
+		});
+		google.maps.event.addListener(marker, 'click', function(){
+			infowindow.open(map,marker);
+		});
+		infowindow.open(map,marker);           
+	}
+</script>
+<script async defer
+	src='https://maps.googleapis.com/maps/api/js?v=3.exp&key={{ google_maps_key }}&callback=initMap'>
+</script>
 {% endblock %}

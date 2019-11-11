@@ -5,6 +5,7 @@
 {% block body_class %}template-nicpage{% endblock %}
 
 {% block content %}
+	<div class="row">
 	<section>
 	    {% for block in page.body %}
 	        {% if block.block_type == 'h1' %}
@@ -26,4 +27,5 @@
 	        {% endif %}
 	    {% endfor %}
 	</section>
+	</div>
 {% endblock %}

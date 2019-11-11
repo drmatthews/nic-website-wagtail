@@ -14,7 +14,7 @@ from wagtail.documents import urls as wagtaildocs_urls
 from nic_website_wagtail.nicpages.feed import BlogFeed
 
 urlpatterns = [
-    url(r'^django-admin/', include(admin.site.urls)),
+    url(r'^django-admin/', admin.site.urls),
 
     url(r'^admin/', include(wagtailadmin_urls)),
     url(r'^documents/', include(wagtaildocs_urls)),

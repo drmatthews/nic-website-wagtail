@@ -12,50 +12,28 @@
         <title>{% block title %}{% if self.seo_title %}{{ site_root.title }} | {{ self.seo_title }}{% else %}{{ site_root.title }} | {{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <script src="https://use.fontawesome.com/aef70a7e70.js"></script>
+        <script src="https://kit.fontawesome.com/addbe5a1b6.js" crossorigin="anonymous"></script>
         {# Global stylesheets #}
-        <link rel="shortcut icon" href="{%  static 'nicpages/img/nic_favicon.ico' %}">
-        <link rel="stylesheet" type="text/css" href="{% static 'nicpages/css/vendor/fotorama.css' %}">
+        <link rel="shortcut icon" href="{%  static 'img/nic_favicon.ico' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/vendor/fotorama.css' %}">
         <!--<link rel="stylesheet" type="text/css" href="{% static 'css/vendor/normalize.css' %}">
         <link rel="stylesheet" type="text/css" href="{% static 'css/vendor/skeleton.css' %}">-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">                        
-        <link rel="stylesheet" type="text/css" href="{% static 'nicpages/css/custom.css' %}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/nic.css' %}">
 
-        <style type="text/css">
-            body {
-              background: url("{% static 'img/bg_gradient.png' %}") repeat-x top center;
-            }
-            @media all and ( min-width: 750px ) {
-              .wrapper {
-                    background: url("{% static 'img/bg_gradient.png' %}") repeat-x top center;
-                }
-            }
-            @media all and ( min-width: 960px ) {
-                .sidebar {
-                    background: url("{% static 'img/sidebar.png' %}") no-repeat;
-                }
-            }
-        </style>
+
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
         {% endblock %}
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body class="{% block body_class %}{% endblock %}" id="page-top">
         {% wagtailuserbar %}
-        {% include "nicpages/includes/mob_nav.html" %}  
-        <div class="wrapper"> <!-- this is here purely to enable mobile nav -->
-          <div class="container"> <!-- this the skeleton.css container class -->
-            {% include "nicpages/includes/header.html" %}
-            {% include "nicpages/includes/sidebar.html" %}
-            <div class="page">
-              <div class="content">
-                {% block content %}{% endblock %}
-              </div>
-            </div>
-            {% include "nicpages/includes/footer.html" %}
-          </div>
+        {% include "nicpages/includes/header.html" %}
+        <div id="page-content-wrapper">                
+            {% block content %}{% endblock %}
         </div>
+
         <style type="text/css">
             .wagtail-userbar-trigger, .wagtail-icon-wagtail:before {
                 content: "\f013";
@@ -69,11 +47,11 @@
             }
         </style>
         {# Global javascript #}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> 
-        <script type="text/javascript" src="{% static 'nicpages/js/vendor/fotorama.js' %}"></script>                 
-        <script type="text/javascript" src="{% static 'nicpages/js/nicpages.js' %}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js" integrity="sha256-H3cjtrm/ztDeuhCN9I4yh4iN2Ybx/y1RM7rMmAesA0k=" crossorigin="anonymous"></script>                
+        <script type="text/javascript" src="{% static 'js/nicpages.js' %}"></script>
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}

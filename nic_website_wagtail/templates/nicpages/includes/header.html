@@ -1,12 +1,80 @@
-{% load staticfiles %}
-<header> 
-	<div class="site-header">
-		<section id="site-logo">
-			<a href="/"><img id="left" src="{% static 'img/bignikon.png' %}"/></a>
-			<img id="center" src="{% static 'img/bigat.png' %}"/>
-			<h1 id="heading">King's College London</h1>
+{% load staticfiles wagtailimages_tags menu_tags %}
 
-			<span class="u-pull-right"><a href="http://www.kcl.ac.uk/index.aspx"><img class="kings-brand" src="{% static 'img/bigkcl.png' %}"/></a></span>
-		</section>
+{% get_menu "main" as navigation %}
+
+<!-- <div class="jumbotron jumbotron-fluid">
+	<video autoplay muted loop poster="https://dummyimage.com/688x120/000/fff">    
+		<source src="{% static 'img/wound_crop.m4v' %}" data-src="{% static 'img/wound_crop.m4v' %}" type="video/mp4">
+	</video>
+	<div class="container pt-2">
+		<a href="/">
+			<img class="img-responsive kings-brand" src="{% static 'img/kcl_new.png' %}"/>
+		</a>
 	</div>
-</header>
+</div> -->
+
+<nav class="navbar navbar-dark bg-dark navbar-expand-md sticky-top" id="mainNav">
+	<div class="container">
+	
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<a class="navbar-brand js-scroll-trigger" href="#page-top">
+			<img src="{% static 'img/nic.png' %}" height=65 class="d-inline-block align-top" alt="">
+		</a>
+		<a class="navbar-brand" href="https://kcl.ac.uk">
+			<img src="{% static 'img/KCL_box_red pin 485rgb.jpg' %}" height=65 class="d-inline-block align-top" alt="">
+		</a>
+
+		<div class="collapse navbar-collapse" id="navbar1">
+					
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link js-scroll-trigger" href="#mission">
+						<img class="nav-icon" src="{% static 'img/mission.png' %}" width=37 height="37"></img>
+						Mission
+					</a>
+				</li>		
+				{% for item in navigation.main_menu_items.all %}
+					<!-- {% if item.submenu %}
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="{{ item.link }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								{% if item.link_image %}
+									{% image item.link_image width-37 %}
+								{% endif %}
+								{{ item.title }}
+							</a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								{% for sub_item in item.submenu.sub_menu_items.all %}
+									<a class="dropdown-item" href="{{ equip_item.link }}">{{ sub_item.title }}</a>
+								{% endfor %}
+							</div>
+						</li>				
+					{% else %} -->
+						<li class="nav-item">
+							<a class="nav-link js-scroll-trigger" href="{{ item.link }}" {% if item.open_in_new_tab %} target="_blank"{% endif %}>
+								{% if item.link_image %}
+									{% image item.link_image original  %}
+								{% endif %}
+								{{ item.title }}
+							</a>
+						</li>
+					<!-- {% endif %} -->
+				{% endfor %}	
+				<li class="nav-item">
+					<div class="dropdown">
+						<button class="btn btn-dark" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<i class="fa fa-search" style="color:white"></i>
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<form class="form-inline" role="search" action="{% url 'search_nic' %}" method="get">
+								<input class="form-control border-right-0 border" type="search" id="example-search-input" placeholder="Type here to search...">
+							</form>
+						</div>
+					</div>	
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
